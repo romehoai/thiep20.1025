@@ -111,9 +111,41 @@
     .running-text{ font-size:13px }
     .lights{ gap:6px; top:8px; }
   }
+
+
+
+
+  /* Intro text xuất hiện ban đầu */
+.intro-text {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 1em;
+  font-weight: 800;
+  text-shadow: 0 0 20px #fff, 0 0 40px #ffb6c1;
+  opacity: 0;
+  z-index: 4000;
+  animation: riseUp 5s ease-out forwards, fadeOut 5s ease-in 25s forwards;
+}
+
+/* Hiệu ứng di chuyển từ dưới lên và mờ dần */
+@keyframes riseUp {
+  0% { bottom: -100px; opacity: 0; }
+  20% { opacity: 1; }
+  100% { bottom: 50%; opacity: 1; }
+}
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
+
+
 </style>
 </head>
 <body>
+<div class="intro-text">Trình bày, phác họa, tạo hình - NghiNH3 👀<br>Thông báo, diễn giải, dẫn dắt - MinhTQ2 👂<br>Nội dung & chất liệu cổ phong - LongNP2<br>Ứng dụng công nghệ & thiết kế web - anh HoaiTT 💻</div>
   <!-- stars background (behind everything) -->
   <canvas id="stars"></canvas>
 
@@ -147,6 +179,10 @@
   <source src="nhacnen.mp3" type="audio/mpeg">
 </audio>
 <script>
+
+
+
+
 /* ========== STARS: background twinkling stars ========== */
 const starsCanvas = document.getElementById('stars');
 const sCtx = starsCanvas.getContext('2d');
@@ -233,6 +269,10 @@ function drawSnow(){
   requestAnimationFrame(drawSnow);
 }
 requestAnimationFrame(drawSnow);
+
+
+
+
 
 /* ========== MAIN: cards moving randomly + toggle captions ========== */
 const IMAGE_COUNT = 20;
